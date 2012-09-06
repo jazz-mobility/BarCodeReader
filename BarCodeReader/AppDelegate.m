@@ -7,10 +7,12 @@
 //
 
 #import "AppDelegate.h"
+#import "BarCodeReader.h"
 
 @implementation AppDelegate
 
 @synthesize window = _window;
+@synthesize nav;
 
 - (void)dealloc
 {
@@ -22,7 +24,10 @@
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.nav = [[UINavigationController alloc]init];
+    BarCodeReader *reader = [[BarCodeReader alloc]init];
+    [nav pushViewController:reader animated:YES];
+    self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
     return YES;
 }
